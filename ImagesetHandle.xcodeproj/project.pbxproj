@@ -15,6 +15,11 @@
 		543B4690212C000A00B98D44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B468F212C000A00B98D44 /* main.m */; };
 		543B469A212C000A00B98D44 /* ImagesetHandleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B4699212C000A00B98D44 /* ImagesetHandleTests.m */; };
 		543B46A5212C000A00B98D44 /* ImagesetHandleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B46A4212C000A00B98D44 /* ImagesetHandleUITests.m */; };
+		548ADE7B2135491D006D809F /* ComepareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 548ADE7A2135491D006D809F /* ComepareVC.m */; };
+		548ADE7E21354A2C006D809F /* CompareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 548ADE7D21354A2C006D809F /* CompareCell.m */; };
+		54BFDA3321354054004F3070 /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BFDA2D21354054004F3070 /* NSDictionary+Log.m */; };
+		54BFDA3421354054004F3070 /* NSString+unicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BFDA2E21354054004F3070 /* NSString+unicode.m */; };
+		54BFDA3521354054004F3070 /* NSArray+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BFDA3121354054004F3070 /* NSArray+Log.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,16 @@
 		543B46A0212C000A00B98D44 /* ImagesetHandleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagesetHandleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		543B46A4212C000A00B98D44 /* ImagesetHandleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagesetHandleUITests.m; sourceTree = "<group>"; };
 		543B46A6212C000A00B98D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		548ADE792135491D006D809F /* ComepareVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComepareVC.h; sourceTree = "<group>"; };
+		548ADE7A2135491D006D809F /* ComepareVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComepareVC.m; sourceTree = "<group>"; };
+		548ADE7C21354A2C006D809F /* CompareCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompareCell.h; sourceTree = "<group>"; };
+		548ADE7D21354A2C006D809F /* CompareCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompareCell.m; sourceTree = "<group>"; };
+		54BFDA2D21354054004F3070 /* NSDictionary+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Log.m"; sourceTree = "<group>"; };
+		54BFDA2E21354054004F3070 /* NSString+unicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+unicode.m"; sourceTree = "<group>"; };
+		54BFDA2F21354054004F3070 /* NSArray+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Log.h"; sourceTree = "<group>"; };
+		54BFDA3021354054004F3070 /* NSDictionary+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Log.h"; sourceTree = "<group>"; };
+		54BFDA3121354054004F3070 /* NSArray+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Log.m"; sourceTree = "<group>"; };
+		54BFDA3221354054004F3070 /* NSString+unicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+unicode.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +116,7 @@
 		543B467F212C000900B98D44 /* ImagesetHandle */ = {
 			isa = PBXGroup;
 			children = (
+				54BFDA2C21354054004F3070 /* CNLog */,
 				543B4680212C000900B98D44 /* AppDelegate.h */,
 				543B4681212C000900B98D44 /* AppDelegate.m */,
 				543B4683212C000900B98D44 /* ViewController.h */,
@@ -110,6 +126,10 @@
 				543B468B212C000A00B98D44 /* LaunchScreen.storyboard */,
 				543B468E212C000A00B98D44 /* Info.plist */,
 				543B468F212C000A00B98D44 /* main.m */,
+				548ADE792135491D006D809F /* ComepareVC.h */,
+				548ADE7A2135491D006D809F /* ComepareVC.m */,
+				548ADE7C21354A2C006D809F /* CompareCell.h */,
+				548ADE7D21354A2C006D809F /* CompareCell.m */,
 			);
 			path = ImagesetHandle;
 			sourceTree = "<group>";
@@ -130,6 +150,19 @@
 				543B46A6212C000A00B98D44 /* Info.plist */,
 			);
 			path = ImagesetHandleUITests;
+			sourceTree = "<group>";
+		};
+		54BFDA2C21354054004F3070 /* CNLog */ = {
+			isa = PBXGroup;
+			children = (
+				54BFDA2D21354054004F3070 /* NSDictionary+Log.m */,
+				54BFDA2E21354054004F3070 /* NSString+unicode.m */,
+				54BFDA2F21354054004F3070 /* NSArray+Log.h */,
+				54BFDA3021354054004F3070 /* NSDictionary+Log.h */,
+				54BFDA3121354054004F3070 /* NSArray+Log.m */,
+				54BFDA3221354054004F3070 /* NSString+unicode.h */,
+			);
+			path = CNLog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +295,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				548ADE7B2135491D006D809F /* ComepareVC.m in Sources */,
 				543B4685212C000900B98D44 /* ViewController.m in Sources */,
+				54BFDA3421354054004F3070 /* NSString+unicode.m in Sources */,
+				54BFDA3321354054004F3070 /* NSDictionary+Log.m in Sources */,
+				54BFDA3521354054004F3070 /* NSArray+Log.m in Sources */,
 				543B4690212C000A00B98D44 /* main.m in Sources */,
 				543B4682212C000900B98D44 /* AppDelegate.m in Sources */,
+				548ADE7E21354A2C006D809F /* CompareCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
