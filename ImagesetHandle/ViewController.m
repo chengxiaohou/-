@@ -27,7 +27,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self onCompare:nil];
+//    [self onCompare:nil]; // 功能一 图片可视化对比
+//    [self compareImageset];// 功能二 图片对比输出或重命名
 }
 
 - (IBAction)onCompare:(id)sender {
@@ -171,26 +172,39 @@
         
         
         BOOL equal = NO;
-        NSString *tureName = nil;
+        NSString *imageNamePre = nil;
         for (NSString *imageName in imagesetFloder) {
-            
-            // 图片全名包含imageset的名字
-            if ([imageName containsString:imagesetName]) {
+            NSRange range = [imageName rangeOfString:@"@"];
+            if (range.location == NSNotFound) {
+                continue;
+            }
+            imageNamePre = [imageName substringToIndex:range.location];
+            // 图片名 == imageset的名字
+            if ([imageNamePre isEqualToString:imagesetName]) {
                 equal = YES;
                 break;
             }
-            // 如果有@，记录不一致的情况
+            // 不一致且有@，则确认是一张图片，标记为不一致
             else if ([imageName containsString:@"@"])
             {
-                NSRange range = [imageName rangeOfString:@"@"];
-                tureName = [imageName substringToIndex:range.location];
+                equal = NO;
+                // 可选自动重命名
+                if (0) {
+                    NSMutableString *newName = [imageName mutableCopy];
+                    [newName replaceCharactersInRange:NSMakeRange(0, range.location) withString:imagesetName];
+//                    NSLog(@"CXHLog:%@ -> %@", imageName, newName);
+//                    NSLog(@"\n");
+                    NSString *floderPath = [NSString stringWithFormat:@"%@/%@.imageset",xxxPath, imagesetName];
+                    [self renameFileName:imageName toNewName:newName floderPath:floderPath];
+                    continue;
+                }
                 break;
             }
         }
         // 不一致
         if (!equal) {
             
-            [badGuysDic setValue:tureName forKey:imagesetName];
+            [badGuysDic setValue:imageNamePre forKey:imagesetName];
         }
     }
     
@@ -200,8 +214,8 @@
     NSLog(@"CXHLog:以下分别是 项目使用名 : 实际名字 \n");
     for (NSString *key in temp) {
         NSString *value = badGuysDic[key];
-        
-        
+
+
         NSLog(@" @\"%@\" : @\"%@\", ", key, value);
     }
     //    NSLog(@"CXHLog:%@", badGuysDic);
@@ -248,6 +262,30 @@
 }
 
 
+- (BOOL)renameFileName:(NSString *)oldName toNewName:(NSString *)newName floderPath:(NSString *)path
+{
+    
+    BOOL result = NO;
+    NSError * error = nil;
+    result = [[NSFileManager defaultManager] moveItemAtPath:[path stringByAppendingPathComponent:oldName] toPath:[path stringByAppendingPathComponent:newName] error:&error];
+    
+    if (error){
+        NSLog(@"重命名失败：%@",[error localizedDescription]);
+    }
+    else
+    {
+        NSLog(@"重命名成功：%@ -> %@", oldName, newName);
+    }
+    
+    return result;
+    
+    /**
+     作者：CrazySteven
+     链接：https://www.jianshu.com/p/a08cf375043a
+     來源：简书
+     简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
+     */
+}
 
 
 
