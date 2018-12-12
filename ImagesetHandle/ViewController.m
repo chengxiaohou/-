@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ComepareVC.h"
+#import "Worker.h"
 @interface ViewController ()
 
 //=========== 两个数组图片对照 ===========
@@ -18,11 +19,25 @@
 
 @end
 
+typedef NS_ENUM (NSUInteger, CellRow) {
+    Row0 = 0,
+    Row1 = 1,
+    Row2 = 2,
+};
+
+
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    CellRow i = 0;
+    switch (i) {
+        case Row0:
+            
+            break;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,7 +76,7 @@
     _listB = [NSMutableArray new];
     // 旧图
     NSString *oldPath = [NSString stringWithFormat:@"%@/image",documePath];
-    NSArray *tempA = [[self getAllFilesByPath:oldPath] mutableCopy];
+    NSArray *tempA = [[Worker getAllFilesByPath:oldPath] mutableCopy];
     tempA = [tempA sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1 compare:obj2];
     }];
@@ -88,7 +103,7 @@
     
     // 新图
     NSString *newPath = [NSString stringWithFormat:@"%@/iOS_WidgetImage",documePath];
-    NSArray *tempB = [[self getAllFilesByPath:newPath] mutableCopy];
+    NSArray *tempB = [[Worker getAllFilesByPath:newPath] mutableCopy];
     tempB = [tempB sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1 compare:obj2];
     }];
@@ -135,21 +150,6 @@
 
 
 
-//#pragma mark 【递归】获取路径下以及更深层次文件夹中的文件，仅文件
-- (NSArray *)getAllFilesByPath:(NSString *)path
-{
-    NSMutableArray *floders = [[self getFlodersByPath:path] mutableCopy];
-    NSMutableArray *files = [[self getFileByPath:path] mutableCopy];
-    
-    [files removeObjectsInArray:floders];
-    
-    for (NSString *subFloder in floders) {
-        NSString *subPath = [NSString stringWithFormat:@"%@/%@",path, subFloder];
-        [files addObjectsFromArray:[self getAllFilesByPath:subPath]];
-    }
-    
-    return files;
-}
 
 //========================== === ==========================
 
@@ -161,13 +161,13 @@
     
     // 全局搜索项目中的.imageset，把搜索结果放入到一个文件夹，起名为xxx，再把文件夹拖入模拟器的如下位置，即可开始查找
     NSString *xxxPath = [NSString stringWithFormat:@"%@/xxx",documePath];
-    NSArray *xxxFloder = [self getFlodersByPath:xxxPath];
+    NSArray *xxxFloder = [Worker getFlodersByPath:xxxPath];
     
     NSMutableDictionary *badGuysDic = [NSMutableDictionary new];
     
     for (NSString *imageset in xxxFloder)
     {
-        NSArray *imagesetFloder = [self getFileByPath:[NSString stringWithFormat:@"%@/xxx/%@",documePath, imageset]];
+        NSArray *imagesetFloder = [Worker getFileByPath:[NSString stringWithFormat:@"%@/xxx/%@",documePath, imageset]];
         NSString *imagesetName = [imageset stringByReplacingOccurrencesOfString:@".imageset" withString:@""];
         
         
@@ -195,7 +195,7 @@
 //                    NSLog(@"CXHLog:%@ -> %@", imageName, newName);
 //                    NSLog(@"\n");
                     NSString *floderPath = [NSString stringWithFormat:@"%@/%@.imageset",xxxPath, imagesetName];
-                    [self renameFileName:imageName toNewName:newName floderPath:floderPath];
+                    [Worker renameFileName:imageName toNewName:newName floderPath:floderPath];
                     continue;
                 }
                 break;
@@ -223,69 +223,6 @@
 }
 
 
-#pragma mark 文件夹和文件递归
-- (NSArray *)getRecursiveFilesByPath:(NSString *)path
-{
-    NSFileManager *defaultManager = [NSFileManager defaultManager];
-    NSArray *array = [defaultManager subpathsOfDirectoryAtPath:path error:nil];
-    return array;
-}
-
-// 根据路径获取文件目录下所有文件（不递归）
-- (NSArray *)getFileByPath:(NSString *)path
-{
-    NSFileManager *defaultManager = [NSFileManager defaultManager];
-    NSArray *array = [defaultManager contentsOfDirectoryAtPath:path error:nil];
-    return array;
-}
-
-// 根据路径获取该路径下所有目录
-- (NSArray *)getFlodersByPath:(NSString *)path
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    NSArray * fileAndFloderArr = [self getFileByPath:path];
-    
-    NSMutableArray *dirArray = [[NSMutableArray alloc] init];
-    BOOL isDir = NO;
-    //在上面那段程序中获得的fileList中列出文件夹名
-    for (NSString * file in fileAndFloderArr){
-        
-        NSString *paths = [path stringByAppendingPathComponent:file];
-        [fileManager fileExistsAtPath:paths isDirectory:(&isDir)];
-        if (isDir) {
-            [dirArray addObject:file];
-        }
-        isDir = NO;
-    }
-    return dirArray;
-}
-
-
-- (BOOL)renameFileName:(NSString *)oldName toNewName:(NSString *)newName floderPath:(NSString *)path
-{
-    
-    BOOL result = NO;
-    NSError * error = nil;
-    result = [[NSFileManager defaultManager] moveItemAtPath:[path stringByAppendingPathComponent:oldName] toPath:[path stringByAppendingPathComponent:newName] error:&error];
-    
-    if (error){
-        NSLog(@"重命名失败：%@",[error localizedDescription]);
-    }
-    else
-    {
-        NSLog(@"重命名成功：%@ -> %@", oldName, newName);
-    }
-    
-    return result;
-    
-    /**
-     作者：CrazySteven
-     链接：https://www.jianshu.com/p/a08cf375043a
-     來源：简书
-     简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
-     */
-}
 
 
 

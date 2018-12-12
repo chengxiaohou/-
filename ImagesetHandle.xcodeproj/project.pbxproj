@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		543200FC21BE67CF00D57742 /* Worker.m in Sources */ = {isa = PBXBuildFile; fileRef = 543200FB21BE67CF00D57742 /* Worker.m */; };
 		543B4682212C000900B98D44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B4681212C000900B98D44 /* AppDelegate.m */; };
 		543B4685212C000900B98D44 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B4684212C000900B98D44 /* ViewController.m */; };
 		543B4688212C000900B98D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 543B4686212C000900B98D44 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		543B4690212C000A00B98D44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B468F212C000A00B98D44 /* main.m */; };
 		543B469A212C000A00B98D44 /* ImagesetHandleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B4699212C000A00B98D44 /* ImagesetHandleTests.m */; };
 		543B46A5212C000A00B98D44 /* ImagesetHandleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 543B46A4212C000A00B98D44 /* ImagesetHandleUITests.m */; };
+		5454A24721BE51CE00E6D6DB /* ImageRenameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5454A24621BE51CE00E6D6DB /* ImageRenameVC.m */; };
 		548ADE7B2135491D006D809F /* ComepareVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 548ADE7A2135491D006D809F /* ComepareVC.m */; };
 		548ADE7E21354A2C006D809F /* CompareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 548ADE7D21354A2C006D809F /* CompareCell.m */; };
 		54BFDA3321354054004F3070 /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 54BFDA2D21354054004F3070 /* NSDictionary+Log.m */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		543200FA21BE67CF00D57742 /* Worker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Worker.h; sourceTree = "<group>"; };
+		543200FB21BE67CF00D57742 /* Worker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Worker.m; sourceTree = "<group>"; };
 		543B467D212C000900B98D44 /* ImagesetHandle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImagesetHandle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		543B4680212C000900B98D44 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		543B4681212C000900B98D44 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		543B46A0212C000A00B98D44 /* ImagesetHandleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImagesetHandleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		543B46A4212C000A00B98D44 /* ImagesetHandleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImagesetHandleUITests.m; sourceTree = "<group>"; };
 		543B46A6212C000A00B98D44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5454A24521BE51CE00E6D6DB /* ImageRenameVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRenameVC.h; sourceTree = "<group>"; };
+		5454A24621BE51CE00E6D6DB /* ImageRenameVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageRenameVC.m; sourceTree = "<group>"; };
 		548ADE792135491D006D809F /* ComepareVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComepareVC.h; sourceTree = "<group>"; };
 		548ADE7A2135491D006D809F /* ComepareVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComepareVC.m; sourceTree = "<group>"; };
 		548ADE7C21354A2C006D809F /* CompareCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompareCell.h; sourceTree = "<group>"; };
@@ -130,6 +136,10 @@
 				548ADE7A2135491D006D809F /* ComepareVC.m */,
 				548ADE7C21354A2C006D809F /* CompareCell.h */,
 				548ADE7D21354A2C006D809F /* CompareCell.m */,
+				5454A24521BE51CE00E6D6DB /* ImageRenameVC.h */,
+				5454A24621BE51CE00E6D6DB /* ImageRenameVC.m */,
+				543200FA21BE67CF00D57742 /* Worker.h */,
+				543200FB21BE67CF00D57742 /* Worker.m */,
 			);
 			path = ImagesetHandle;
 			sourceTree = "<group>";
@@ -302,7 +312,9 @@
 				54BFDA3521354054004F3070 /* NSArray+Log.m in Sources */,
 				543B4690212C000A00B98D44 /* main.m in Sources */,
 				543B4682212C000900B98D44 /* AppDelegate.m in Sources */,
+				5454A24721BE51CE00E6D6DB /* ImageRenameVC.m in Sources */,
 				548ADE7E21354A2C006D809F /* CompareCell.m in Sources */,
+				543200FC21BE67CF00D57742 /* Worker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
