@@ -41,30 +41,30 @@
         {
             if ([name hasSuffix:@"png"] || [name hasSuffix:@"jpg"] || [name hasSuffix:@"gif"]) {
                 
-                //=========== 重命名1 ===========
-//                NSString *newName = [name stringByReplacingOccurrencesOfString:@"rrss" withString:@"yyww"];
-                //=========== 重命名2 ===========
-//                NSString *newName = [NSString stringWithFormat:@"rrss_%@",name];
-//                [Worker renameFileName:name toNewName:newName floderPath:path];
+                //=========== 重命名 ===========
+                NSString *newName = [NSString stringWithFormat:@"yyww_%@",name];// 方式1
+//                NSString *newName = [name stringByReplacingOccurrencesOfString:@"rrss" withString:@"yyww"];// 方式2
+                
+                [Worker renameFileName:name toNewName:newName floderPath:path];
                 //=========== 查重 ===========
-                if ([weakSelf.tempDic valueForKey:name]) {
-                    NSLog(@"CXHLog: 重复的 %@", name);
-                }
-                else
-                {
-                    [weakSelf.tempDic setValue:@"000" forKey:name];
-                }
+//                if ([weakSelf.tempDic valueForKey:name]) {
+//                    NSLog(@"CXHLog: 重复的 %@", name);
+//                }
+//                else
+//                {
+//                    [weakSelf.tempDic setValue:@"000" forKey:name];
+//                }
                 //=========== === ===========
             }
         }
     }];
     if (allFiles.count == 0) {
-        NSLog(@"CXHLog:请确保存此路径存在%@，且其中包含本次需要改名的图片", xxxPath);
+        NSLog(@"CXHLog:请确保存此路径存在，且其中包含本次需要改名的图片\n%@", xxxPath);
         return;
     }
     else
     {
-        NSLog(@"CXHLog:成功！请查看：%@", xxxPath);
+        NSLog(@"CXHLog:处理完成，请查收：\n%@", xxxPath);
     }
 }
 
