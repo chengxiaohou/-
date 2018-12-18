@@ -9,13 +9,14 @@
 #import "ImageRenameVC.h"
 #import "Worker.h"
 @interface ImageRenameVC ()
-
+@property (strong, nonatomic) NSMutableDictionary *tempDic;
 @end
 
 @implementation ImageRenameVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tempDic = [NSMutableDictionary new];
     /**
      * 文件批量改名程序开发
      * macOS系统自带的批量改名方法不够灵活，且无法保留目录结构，因此写个用得顺手的程序：
@@ -23,13 +24,15 @@
      * 可自定义哪些格式或名字的文件要改名
      * 可自定义改名格式
      * 通过Mac上的iOS模拟器使用，方便访问模拟器的文件目录
+     20181218 新增文件名查重的功能
      */
-    [self renameImages];
+    [self handleImages];
 }
 
 #pragma mark 图片批量改名
-- (void)renameImages
+- (void)handleImages
 {
+    __weak __typeof__(self) weakSelf = self;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documePath = [paths objectAtIndex:0];
     NSString *xxxPath = [NSString stringWithFormat:@"%@/xxx",documePath];
@@ -38,9 +41,20 @@
         {
             if ([name hasSuffix:@"png"] || [name hasSuffix:@"jpg"] || [name hasSuffix:@"gif"]) {
                 
-                NSString *newName = [name stringByReplacingOccurrencesOfString:@"rrss" withString:@"yyww"];
+                //=========== 重命名1 ===========
+//                NSString *newName = [name stringByReplacingOccurrencesOfString:@"rrss" withString:@"yyww"];
+                //=========== 重命名2 ===========
 //                NSString *newName = [NSString stringWithFormat:@"rrss_%@",name];
-                [Worker renameFileName:name toNewName:newName floderPath:path];
+//                [Worker renameFileName:name toNewName:newName floderPath:path];
+                //=========== 查重 ===========
+                if ([weakSelf.tempDic valueForKey:name]) {
+                    NSLog(@"CXHLog: 重复的 %@", name);
+                }
+                else
+                {
+                    [weakSelf.tempDic setValue:@"000" forKey:name];
+                }
+                //=========== === ===========
             }
         }
     }];
