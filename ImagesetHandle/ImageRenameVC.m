@@ -39,10 +39,10 @@
     NSArray *allFiles = [Worker getAllFilesByPath:xxxPath handle:^(NSString * _Nonnull name, NSString * _Nonnull path) {
         
         {
-            if ([name hasSuffix:@"png"] || [name hasSuffix:@"jpg"] || [name hasSuffix:@"gif"]) {
+            if ([name hasSuffix:@"png"] || [name hasSuffix:@"jpg"] || [name hasSuffix:@"gif"] || [name hasSuffix:@"jpeg"]) {
                 
                 //=========== 重命名 ===========
-                NSString *newName = [NSString stringWithFormat:@"yyww_%@",name];// 方式1
+                NSString *newName = [NSString stringWithFormat:@"mmss_%@",name];// 方式1
 //                NSString *newName = [name stringByReplacingOccurrencesOfString:@"rrss" withString:@"yyww"];// 方式2
                 
                 [Worker renameFileName:name toNewName:newName floderPath:path];
